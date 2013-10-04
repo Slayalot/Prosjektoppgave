@@ -1,0 +1,6 @@
+syntax: glob
+build
+SWVis/src/skybox/*.h.rule
+SWVis/src/glsl/*.h.rule
+SWVis/src/glsl/*.h
+SWVis/src/skybox/*.h

@@ -1,0 +1,78 @@
+/*****************************************************************************/
+/*                                                                           */
+/*                                                                           */
+/* (c) Copyright 2010, 2011, 2012 by                                         */
+/*     SINTEF, Oslo, Norway                                                  */
+/*     All rights reserved.                                                  */
+/*                                                                           */
+/*  THIS SOFTWARE IS FURNISHED UNDER A LICENSE AND MAY BE USED AND COPIED    */
+/*  ONLY IN  ACCORDANCE WITH  THE  TERMS  OF  SUCH  LICENSE  AND WITH THE    */
+/*  INCLUSION OF THE ABOVE COPYRIGHT NOTICE. THIS SOFTWARE OR  ANY  OTHER    */
+/*  COPIES THEREOF MAY NOT BE PROVIDED OR OTHERWISE MADE AVAILABLE TO ANY    */
+/*  OTHER PERSON.  NO TITLE TO AND OWNERSHIP OF  THE  SOFTWARE IS  HEREBY    */
+/*  TRANSFERRED.                                                             */
+/*                                                                           */
+/*  SINTEF  MAKES NO WARRANTY  OF  ANY KIND WITH REGARD TO THIS SOFTWARE,    */
+/*  INCLUDING,   BUT   NOT   LIMITED   TO,  THE  IMPLIED   WARRANTIES  OF    */
+/*  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.                    */
+/*                                                                           */
+/*  SINTEF SHALL NOT BE  LIABLE  FOR  ERRORS  CONTAINED HEREIN OR DIRECT,    */
+/*  SPECIAL,  INCIDENTAL  OR  CONSEQUENTIAL  DAMAGES  IN  CONNECTION WITH    */
+/*  FURNISHING, PERFORMANCE, OR USE OF THIS MATERIAL.                        */
+/*                                                                           */
+/*                                                                           */
+/*****************************************************************************/
+
+#ifndef KPSIMULATOR_CONFIGURE_H__
+#define KPSIMULATOR_CONFIGURE_H__
+
+#cmakedefine KPSIMULATOR_USE_BC_FIXED_DEPTH_N
+#cmakedefine KPSIMULATOR_USE_BC_FIXED_DEPTH_S
+#cmakedefine KPSIMULATOR_USE_BC_FIXED_DEPTH_E
+#cmakedefine KPSIMULATOR_USE_BC_FIXED_DEPTH_W
+#cmakedefine KPSIMULATOR_USE_BC_FIXED_DISCHARGE_N
+#cmakedefine KPSIMULATOR_USE_BC_FIXED_DISCHARGE_S
+#cmakedefine KPSIMULATOR_USE_BC_FIXED_DISCHARGE_E
+#cmakedefine KPSIMULATOR_USE_BC_FIXED_DISCHARGE_W
+#cmakedefine KPSIMULATOR_USE_BC_OPEN_N
+#cmakedefine KPSIMULATOR_USE_BC_OPEN_S
+#cmakedefine KPSIMULATOR_USE_BC_OPEN_E
+#cmakedefine KPSIMULATOR_USE_BC_OPEN_W
+#cmakedefine KPSIMULATOR_USE_BC_WALL_N
+#cmakedefine KPSIMULATOR_USE_BC_WALL_S
+#cmakedefine KPSIMULATOR_USE_BC_WALL_E
+#cmakedefine KPSIMULATOR_USE_BC_WALL_W
+
+#cmakedefine KPSIMULATOR_USE_AUTOTUNE
+#cmakedefine KPSIMULATOR_USE_FLUX_ROW
+#cmakedefine KPSIMULATOR_USE_BC_SMALL_DOMAINS
+
+#define KPSIMULATOR_MAJOR_VERSION @KPSIMULATOR_MAJOR_VERSION@
+#define KPSIMULATOR_MINOR_VERSION @KPSIMULATOR_MINOR_VERSION@
+#define KPSIMULATOR_BUILD_VERSION @KPSIMULATOR_BUILD_VERSION@
+#define KPSIMULATOR_ZERO_FLUX_EPS @KPSIMULATOR_ZERO_FLUX_EPS@
+#define KPSIMULATOR_DRY_EPS @KPSIMULATOR_DRY_EPS@
+#define KPSIMULATOR_MINMOD_THETA @KPSIMULATOR_MINMOD_THETA@
+#define KPSIMULATOR_FLUX_SLOPE_EPS @KPSIMULATOR_FLUX_SLOPE_EPS@
+
+#define KPSIMULATOR_FLUX_BLOCK_WIDTH @KPSIMULATOR_FLUX_BLOCK_WIDTH@
+#define KPSIMULATOR_FLUX_BLOCK_HEIGHT @KPSIMULATOR_FLUX_BLOCK_HEIGHT@
+
+#define KPSIMULATOR_GROW_BLOCK_WIDTH @KPSIMULATOR_GROW_BLOCK_WIDTH@
+#define KPSIMULATOR_GROW_BLOCK_HEIGHT @KPSIMULATOR_GROW_BLOCK_HEIGHT@
+
+#define KPSIMULATOR_TARGET_GPU_ARCH @KPSIMULATOR_TARGET_GPU_ARCH@
+#define KPSIMULATOR_TARGET_CPU_ARCH @KPSIMULATOR_TARGET_CPU_ARCH@
+
+#define KPSIMULATOR_CUDA_COMPILER_STRING "@CUDA_NVCC_EXECUTABLE@ (version='@CUDA_VERSION@' flags='@CUDA_NVCC_FLAGS@', arch='@KPSIMULATOR_TARGET_GPU_ARCH@-bit')"
+#define KPSIMULATOR_CXX_COMPILER_STRING "@CMAKE_CXX_COMPILER@ (flags='@CMAKE_CXX_FLAGS@', arch='@KPSIMULATOR_TARGET_CPU_ARCH@-bit')"
+
+#define KPSIMULATOR_CUDA_VERSION @KPSIMULATOR_CUDA_VERSION@
+
+//Make sure that both flux and rk use the same block size. We assume that
+//the flux kernel restricts the maximum block size...
+#define KPSIMULATOR_RK_BLOCK_WIDTH KPSIMULATOR_FLUX_BLOCK_WIDTH
+#define KPSIMULATOR_RK_BLOCK_HEIGHT KPSIMULATOR_FLUX_BLOCK_HEIGHT
+
+
+#endif
